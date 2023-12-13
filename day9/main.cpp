@@ -6,8 +6,6 @@
 #include <string>
 #include <vector>
 
-// moved from python to cpp, realized I don't enjoy working with python rn
-//
 // using namespace for convenience
 using namespace std;
 
