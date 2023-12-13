@@ -1,10 +1,10 @@
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <map>
 #include <sstream>
 #include <string>
 #include <vector>
-#include <algorithm>
 
 // moved from python to cpp, realized I don't enjoy working with python rn
 //
@@ -31,7 +31,7 @@ vector<vector<int>> loadData() {
     return values;
 }
 
-int findNextValue(vector<int> numbers){
+int findNextValue(vector<int> numbers) {
     vector<vector<int>> stepList;
     vector<int> currentSteps = numbers;
     vector<int> steps;
@@ -40,9 +40,9 @@ int findNextValue(vector<int> numbers){
     // add initial numbers
     stepList.push_back(currentSteps);
 
-    do{
+    do {
         steps.clear();
-        for(int i = 0; i < currentSteps.size() - 1; i++){
+        for (int i = 0; i < currentSteps.size() - 1; i++) {
             steps.push_back(currentSteps[i + 1] - currentSteps[i]);
         }
 
@@ -50,50 +50,47 @@ int findNextValue(vector<int> numbers){
         currentSteps.assign(steps.begin(), steps.end());
 
         // check if all back to 0
-        status = std::all_of(steps.begin(), steps.end(), [](int value) {
-            return value == 0;
-            });
+        status = std::all_of(steps.begin(), steps.end(),
+                             [](int value) { return value == 0; });
 
     } while (!status);
 
     // get next value
     int nextValue = 0;
-    for(auto step : stepList){
+    for (auto step : stepList) {
         nextValue += step.back();
     }
 
     return nextValue;
 }
 
-
-int findPrewValue(vector<int> numbers){
+int findPrewValue(vector<int> numbers) {
     vector<vector<int>> stepList;
     vector<int> currentSteps = numbers;
     vector<int> steps;
     bool status = false;
 
-
-    do{
+    do {
         steps.clear();
-        for(int i = 0; i < currentSteps.size() - 1; i++){
+        for (int i = 0; i < currentSteps.size() - 1; i++) {
             steps.push_back(currentSteps[i + 1] - currentSteps[i]);
         }
 
+        currentSteps.assign(steps.begin(), steps.end());
         reverse(steps.begin(), steps.end());
         stepList.push_back(steps);
-        currentSteps.assign(steps.begin(), steps.end());
 
         // check if all back to 0
-        status = std::all_of(steps.begin(), steps.end(), [](int value) {
-            return value == 0;
-            });
+        status = std::all_of(steps.begin(), steps.end(),
+                             [](int value) { return value == 0; });
 
     } while (!status);
+    reverse(stepList.begin(), stepList.end());
 
     // get last value
     int nextValue = 0;
-    for(auto step : stepList){
-        nextValue += step.back();
+    for (auto step : stepList) {
+        nextValue = step.back() - nextValue;
     }
 
     return nextValue;
@@ -104,7 +101,7 @@ int main() {
 
     int sum = 0;
 
-    for(auto& list:values){
+    for (auto& list : values) {
         sum += findPrewValue(list);
     }
     cout << sum << endl;
