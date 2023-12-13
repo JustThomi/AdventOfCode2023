@@ -1,7 +1,9 @@
-numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+numbers = ['zero', 'one', 'two', 'three', 'four',
+           'five', 'six', 'seven', 'eight', 'nine']
+
 
 def getCalibration():
-    with open('./day1/input.txt', 'r') as f:
+    with open('./inputs/day1.txt', 'r') as f:
         lines = f.readlines()
         sum = 0
 
@@ -23,7 +25,7 @@ def getCalibration():
                         break
                 else:
                     break
-            
+
             rev_line = line[::-1]
             sub_string = ''
             first_nr = nr
@@ -46,6 +48,7 @@ def getCalibration():
             sum += int(nr)
 
     return sum
+
 
 if __name__ == "__main__":
     print(getCalibration())

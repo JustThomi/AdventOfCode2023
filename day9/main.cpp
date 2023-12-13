@@ -12,7 +12,7 @@
 using namespace std;
 
 vector<vector<int>> loadData() {
-    ifstream file("input.txt");
+    ifstream file("../inputs/day9.txt");
     vector<vector<int>> values;
 
     string text;
@@ -86,6 +86,11 @@ int findPrewValue(vector<int> numbers) {
 
     } while (!status);
     reverse(stepList.begin(), stepList.end());
+
+    for (auto item : stepList) {
+        for (int nr : item) cout << nr << ' ';
+        cout << endl;
+    }
 
     // get last value
     int nextValue = 0;

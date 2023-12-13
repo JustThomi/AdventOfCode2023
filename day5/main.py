@@ -1,7 +1,7 @@
 
 # Helpers
 def load_file():
-    with open('./day5/input.txt') as f:
+    with open('./inputs/day5.txt') as f:
         lines = f.readlines()
         ranges = []
 

@@ -28,7 +28,7 @@ def beatRecord():
 
 
 def countWaysBigRace():
-    with open('./day6/input.txt', 'r') as file:
+    with open('./inputs/day6.txt', 'r') as file:
         lines = file.readlines()
 
         # it can probs be done better

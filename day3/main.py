@@ -2,7 +2,7 @@
 
 # I SUCKED AT THIS ONE lol
 def findEnginePart():
-    with open('./day3/input.txt') as f:
+    with open('./inputs/day3.txt') as f:
         matrix = f.readlines()
         gears = dict()
         sum = 0
@@ -14,7 +14,7 @@ def findEnginePart():
             nr = ''
             is_correct = False
 
-            #look for gears
+            # look for gears
             for char_id, char in enumerate(line):
                 if char == '*':
                     gears[(line_id, char_id)] = []
@@ -23,25 +23,30 @@ def findEnginePart():
             for char_id, char in enumerate(line):
 
                 if char.isdigit():
-                    nr+=char
+                    nr += char
 
                     # Check if next to symbol
                     if line_id == 0:
                         top_left = False
                         top_right = False
                         top = False
-                        bot = matrix[line_id + 1][char_id] != '.' and not matrix[line_id + 1][char_id].isdigit()
+                        bot = matrix[line_id +
+                                     1][char_id] != '.' and not matrix[line_id + 1][char_id].isdigit()
 
                         if char_id == 0:
                             left = False
                             bot_left = False
                         else:
-                            left = matrix[line_id][char_id - 1] != '.'  and not matrix[line_id][char_id - 1].isdigit()
-                            bot_left = matrix[line_id + 1][char_id - 1] != '.' and not matrix[line_id + 1][char_id - 1].isdigit()
+                            left = matrix[line_id][char_id -
+                                                   1] != '.' and not matrix[line_id][char_id - 1].isdigit()
+                            bot_left = matrix[line_id + 1][char_id -
+                                                           1] != '.' and not matrix[line_id + 1][char_id - 1].isdigit()
 
                         if char_id < len(line) - 1:
-                            right = matrix[line_id][char_id + 1] != '.' and not matrix[line_id][char_id + 1].isdigit()
-                            bot_right = matrix[line_id + 1][char_id + 1] != '.' and not matrix[line_id + 1][char_id + 1].isdigit()
+                            right = matrix[line_id][char_id +
+                                                    1] != '.' and not matrix[line_id][char_id + 1].isdigit()
+                            bot_right = matrix[line_id + 1][char_id +
+                                                            1] != '.' and not matrix[line_id + 1][char_id + 1].isdigit()
                         else:
                             right = False
                             bot_right = False
@@ -50,41 +55,54 @@ def findEnginePart():
                         bot_left = False
                         bot_right = False
                         bot = False
-                        top = matrix[line_id - 1][char_id] != '.' and not matrix[line_id - 1][char_id].isdigit()
+                        top = matrix[line_id -
+                                     1][char_id] != '.' and not matrix[line_id - 1][char_id].isdigit()
 
                         if char_id == 0:
                             left = False
                             top_left = False
                         else:
-                            left = matrix[line_id][char_id - 1] != '.'  and not matrix[line_id][char_id - 1].isdigit()
-                            top_left = matrix[line_id - 1][char_id - 1] != '.' and not matrix[line_id - 1][char_id - 1].isdigit()
+                            left = matrix[line_id][char_id -
+                                                   1] != '.' and not matrix[line_id][char_id - 1].isdigit()
+                            top_left = matrix[line_id - 1][char_id -
+                                                           1] != '.' and not matrix[line_id - 1][char_id - 1].isdigit()
 
                         if char_id < len(line) - 1:
-                            right = matrix[line_id][char_id + 1] != '.' and not matrix[line_id][char_id + 1].isdigit()
-                            top_right = matrix[line_id - 1][char_id + 1] != '.' and not matrix[line_id - 1][char_id + 1].isdigit()
+                            right = matrix[line_id][char_id +
+                                                    1] != '.' and not matrix[line_id][char_id + 1].isdigit()
+                            top_right = matrix[line_id - 1][char_id +
+                                                            1] != '.' and not matrix[line_id - 1][char_id + 1].isdigit()
                         else:
                             right = False
-                            top_right = False 
+                            top_right = False
                     else:
-                        bot = matrix[line_id + 1][char_id] != '.' and not matrix[line_id + 1][char_id].isdigit()
-                        top = matrix[line_id - 1][char_id] != '.' and not matrix[line_id - 1][char_id].isdigit()
+                        bot = matrix[line_id +
+                                     1][char_id] != '.' and not matrix[line_id + 1][char_id].isdigit()
+                        top = matrix[line_id -
+                                     1][char_id] != '.' and not matrix[line_id - 1][char_id].isdigit()
 
                         if char_id == 0:
                             left = False
                             top_left = False
                             bot_left = False
                         else:
-                            left = matrix[line_id][char_id - 1] != '.'  and not matrix[line_id][char_id - 1].isdigit()
-                            top_left = matrix[line_id - 1][char_id - 1] != '.' and not matrix[line_id - 1][char_id - 1].isdigit()
-                            bot_left = matrix[line_id + 1][char_id - 1] != '.' and not matrix[line_id + 1][char_id - 1].isdigit()
+                            left = matrix[line_id][char_id -
+                                                   1] != '.' and not matrix[line_id][char_id - 1].isdigit()
+                            top_left = matrix[line_id - 1][char_id -
+                                                           1] != '.' and not matrix[line_id - 1][char_id - 1].isdigit()
+                            bot_left = matrix[line_id + 1][char_id -
+                                                           1] != '.' and not matrix[line_id + 1][char_id - 1].isdigit()
 
                         if char_id < len(line) - 2:
-                            right = matrix[line_id][char_id + 1] != '.' and not matrix[line_id][char_id + 1].isdigit()
-                            top_right = matrix[line_id - 1][char_id + 1] != '.' and not matrix[line_id - 1][char_id + 1].isdigit()
-                            bot_right = matrix[line_id + 1][char_id + 1] != '.' and not matrix[line_id + 1][char_id + 1].isdigit()
+                            right = matrix[line_id][char_id +
+                                                    1] != '.' and not matrix[line_id][char_id + 1].isdigit()
+                            top_right = matrix[line_id - 1][char_id +
+                                                            1] != '.' and not matrix[line_id - 1][char_id + 1].isdigit()
+                            bot_right = matrix[line_id + 1][char_id +
+                                                            1] != '.' and not matrix[line_id + 1][char_id + 1].isdigit()
                         else:
                             right = False
-                            top_right = False 
+                            top_right = False
                             bot_right = False
 
                     if left or right or top or bot or bot_left or bot_right or top_left or top_right:
@@ -97,7 +115,6 @@ def findEnginePart():
                     top = matrix[line_id][char_id - 1] == "*"
                     bot = matrix[line_id][char_id - 1] == "*"
 
-                    
                 else:
                     if is_correct:
                         sum += int(nr)
@@ -108,12 +125,13 @@ def findEnginePart():
 
         return sum
 
+
 def getGearRatio():
-    with open('./day3/out.txt') as f:
+    with open('./inputs/day3.txt') as f:
         matrix = f.readlines()
         gears = dict()
 
-        #look for gears
+        # look for gears
         for line_id, line in enumerate(matrix):
             for char_id, char in enumerate(line):
                 if char == '*':
@@ -122,59 +140,59 @@ def getGearRatio():
         nr = ''
         to_check = []
 
-        #look for numbers
+        # look for numbers
         for line_id, line in enumerate(matrix):
             for char_id, char in enumerate(line):
-                
+
                 if char.isdigit():
                     nr += char
 
                     if not line[char_id - 1].isdigit() and not line[char_id + 1].isdigit():
-                        #top
+                        # top
                         to_check.append((line_id - 1, char_id))
-                        #top_left
+                        # top_left
                         to_check.append((line_id - 1, char_id - 1))
-                        #left
+                        # left
                         to_check.append((line_id, char_id - 1))
-                        #bot_left
+                        # bot_left
                         to_check.append((line_id + 1, char_id - 1))
-                        #bot
+                        # bot
                         to_check.append((line_id + 1, char_id))
-                        #top_right
+                        # top_right
                         to_check.append((line_id - 1, char_id + 1))
-                        #right
+                        # right
                         to_check.append((line_id, char_id + 1))
-                        #bot_right
+                        # bot_right
                         to_check.append((line_id + 1, char_id + 1))
 
                     elif not line[char_id - 1].isdigit():
-                        #top
+                        # top
                         to_check.append((line_id - 1, char_id))
-                        #top_left
+                        # top_left
                         to_check.append((line_id - 1, char_id - 1))
-                        #left
+                        # left
                         to_check.append((line_id, char_id - 1))
-                        #bot_left
+                        # bot_left
                         to_check.append((line_id + 1, char_id - 1))
-                        #bot
+                        # bot
                         to_check.append((line_id + 1, char_id))
 
                     elif line[char_id - 1].isdigit() and line[char_id + 1].isdigit():
-                        #top
+                        # top
                         to_check.append((line_id - 1, char_id))
-                        #bot
+                        # bot
                         to_check.append((line_id + 1, char_id))
-                        
+
                     elif not line[char_id + 1].isdigit():
-                        #top
+                        # top
                         to_check.append((line_id - 1, char_id))
-                        #top_right
+                        # top_right
                         to_check.append((line_id - 1, char_id + 1))
-                        #right
+                        # right
                         to_check.append((line_id, char_id + 1))
-                        #bot_right
+                        # bot_right
                         to_check.append((line_id + 1, char_id + 1))
-                        #bot
+                        # bot
                         to_check.append((line_id + 1, char_id))
 
                 else:
@@ -184,7 +202,7 @@ def getGearRatio():
 
                     to_check = []
                     nr = ''
-        
+
     sum = 0
 
     for numbers in gears.values():
@@ -197,11 +215,12 @@ def getGearRatio():
             sum += ratio
 
     return sum
-                           
-def addPadding():
-    output = open('./puzzle3/out.txt', 'w')
 
-    with open('./puzzle3/input.txt', 'r') as inp:
+
+def addPadding(path):
+    output = open(path, 'w')
+
+    with open(path, 'r') as inp:
         matrix = inp.readlines()
 
         for line_id, line in enumerate(matrix):
@@ -216,6 +235,7 @@ def addPadding():
             # print(len(new_line))
 
     output.close()
+
 
 if __name__ == "__main__":
     print(getGearRatio())

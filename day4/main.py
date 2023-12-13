@@ -34,7 +34,7 @@ def findWinnings():
 
 
 def storeCards():
-    with open('./day4/input.txt') as f:
+    with open('./inputs/day4.txt') as f:
         lines = f.readlines()
         cards = dict()
 
