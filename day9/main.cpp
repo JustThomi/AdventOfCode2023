@@ -70,6 +70,10 @@ int findPrewValue(vector<int> numbers) {
     vector<int> steps;
     bool status = false;
 
+    // add initial list
+    reverse(numbers.begin(), numbers.end());
+    stepList.push_back(numbers);
+
     do {
         steps.clear();
         for (int i = 0; i < currentSteps.size() - 1; i++) {
@@ -83,7 +87,6 @@ int findPrewValue(vector<int> numbers) {
         // check if all back to 0
         status = std::all_of(steps.begin(), steps.end(),
                              [](int value) { return value == 0; });
-
     } while (!status);
     reverse(stepList.begin(), stepList.end());
 
